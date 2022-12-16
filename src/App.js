@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import AddCategory, {} from './componentes/AddCategory';
+import GifGrid from './componentes/GifGrid'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    const [categorias, setCategorias] = useState(['One Punch'])
+
+    return (
+        <>
+            <h2>GitExpertApp</h2>
+            <AddCategory setCategorias = {setCategorias}/>
+            <hr/>
+        <ol>
+            {
+                categorias.map(categorias =>
+                <GifGrid 
+                    categoria={categorias}
+                    key={categorias}
+                />
+                )
+            }
+        </ol>
+
+        </>
+    )
+
+
 }
 
-export default App;
+export default App
